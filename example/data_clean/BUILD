@@ -10,3 +10,7 @@ wasm_cc_binary(
         "@proxy_wasm_cpp_sdk//:proxy_wasm_intrinsics",
     ],
 )
+
+
+
+
