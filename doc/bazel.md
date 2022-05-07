@@ -2,9 +2,6 @@
 Bazel 是一款类似于 Make、Maven 和 Gradle的开源构建和测试工具。它使用可读的高级构建语言，支持多种变成语言编写的项目，并且能够为多个平台进行构建。Bazel 支持构建包含多个仓库、大量开发人员的大型代码库。
 
 ## 为什么需要构建工具
-参考：
-> https://zhuanlan.zhihu.com/p/411563404
-
 对于一个简单的项目 (以C++项目为例) 来说，可能只包含简单的几个头文件 (.h文件) 和源文件 (.cc文件)，这时我们可以将这些文件放到一个目录下，然后使用一条简单的命令完成项目构建：
 
 ```g++ *.cc```
@@ -84,6 +81,18 @@ bazel build //:data-clean.wasm
 ```
 这里目标`data-clean.wasm`是写在`BUILD`文件中的一条规则。
 
+### 构建规则基础
+#### cc_binary
+规则 `cc_library` 用来构建可执行文件。
+
+#### cc_library
+规则 `cc_library` 用来构建库。
+
+### 创建宏与规则
+- 宏：实例化规则的函数。当我们需要在 BUILD 文件中重复使用一些功能时可以定义宏。
+- 规则：规则定义了 Bazel 从输入构建输出的一系列动作，规则比宏的功能更加强大，能够控制 Bazel 内部的整个构建执行流程。
+
+
 ### 示例：
 ```yaml
 load("@proxy_wasm_cpp_sdk//bazel/wasm:wasm.bzl", "wasm_cc_binary")
@@ -110,9 +119,14 @@ bazel build //:data-clean.wasm
 构建成功后在项目的根目录下产生了 bazel-bin bazel-out bazel-stage1 bazel-testlogs 这4个文件夹 (特别注意这些文件夹是软链接，其实际位置可通过命令 ls -l 查找)，
 在 bazel-bin/main 中生成了目标可执行文件 data-clean.wasm。
 
+### 参考
+[Bazel 学习笔记 (一) 快速开始](https://zhuanlan.zhihu.com/p/411563404)
 
+[Bazel 学习笔记 (二) C++ 基础构建规则](https://zhuanlan.zhihu.com/p/412355447)
 
+[Bazel 学习笔记 (三) 依赖外部仓库](https://zhuanlan.zhihu.com/p/415586721)
 
+[Bazel 学习笔记 (四) 创建宏与规则](https://zhuanlan.zhihu.com/p/421489117)
 
 
 
