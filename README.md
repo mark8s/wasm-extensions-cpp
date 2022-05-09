@@ -16,11 +16,11 @@ sudo apt-get install gcc curl python3
 
 ## Develop a Wasm extension with C++
 这部分的内容参考 [Develop a Wasm extension with C++](https://github.com/istio-ecosystem/wasm-extensions/blob/master/doc/write-a-wasm-extension-with-cpp.md)
-需要了解`Bazel`相关的知识。
+，需要了解`Bazel`相关的知识。
 
-`Bazel`是一种编译工具, 类似Maven, [istio-ecosystem/wasm-extensions/extensions](https://github.com/istio-ecosystem/wasm-extensions/tree/master/extensions) 目前的例子都是使用它去编译代码成wasm文件的。
+`Bazel`是一种编译工具, 类似Maven, [istio-ecosystem/wasm-extensions/extensions](https://github.com/istio-ecosystem/wasm-extensions/tree/master/extensions) 。 目前的例子都是使用它去编译得到`.wasm`文件的。
 
-简单开发一个C++的wasm extensions过程就是copy里面例子中的WORKSPACE与BUILD文件，然后修改plugins.cc与plugins.h文件的logic，再使用`Bazel`编译成wasm文件，最后由EnvoyFilter引用到sidecar中。
+简单开发一个C++的wasm extensions过程：copy例子中的WORKSPACE与BUILD文件，然后修改plugins.cc与plugins.h文件的logic，使用`Bazel`编译成wasm文件，最后由EnvoyFilter引用到sidecar中。
 
 ## 问题解决
 
